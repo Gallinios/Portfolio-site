@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="only light">
-<style>html{color-scheme:only light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}html{scroll-behavior:smooth}</style>
+<meta name="color-scheme" content="only dark">
+<meta name="theme-color" content="#0F1311">
+<style>html{color-scheme:only dark;background:#0F1311}body{margin:0}img{max-width:100%}[hidden]{display:none!important}html{scroll-behavior:smooth}</style>
 <title>Dimitris Gallinios Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,9 +13,9 @@
 <style>
 /* Layout: sticky intro column on the left, project index on the right with each project's own palette as a swatch strip; filter by technology */
 :root{
-  --bg:#F2F3F1; --surface:#FFFFFF; --ink:#151A17; --muted:#5C6660; --line:#D9DDD9;
-  --accent:#2F6B4F; --accent-soft:#DCEBE3; --hl:#E7F0EA;
-  color-scheme:only light;
+  --bg:#0F1311; --surface:#161B18; --ink:#E9EDEA; --muted:#98A39D; --line:#26302B;
+  --accent:#7CC4A0; --accent-soft:#1B2E24; --hl:#18231D;
+  color-scheme:only dark;
   --f-display:"Manrope","Segoe UI",sans-serif; --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
 }
 *{box-sizing:border-box}
@@ -108,7 +109,6 @@ footer{margin-top:64px;font-family:var(--f-mono);font-size:12.5px;color:var(--mu
 (function(){
   // Άλλαξε τους συνδέσμους αν τα repositories έχουν άλλο όνομα
   const P=[
-    {t:"Διόνυσος",y:"2026",k:"Πελάτης",tech:["HTML","CSS","JavaScript"],d:"Site για αίθουσα δεξιώσεων: φωτογραφία σε κάδρο καμάρας, τύποι εκδηλώσεων, gallery, συχνές ερωτήσεις και φόρμα αιτήματος με ημερομηνία και αριθμό καλεσμένων.",sw:["#9C7630","#C9A45C","#F1EADD","#FBF8F2"],url:"https://gallinios.github.io/dionysos/"},
     {t:"Kinetra",y:"2026",k:"Landing page",tech:["HTML","CSS","JavaScript"],d:"Site για φανταστικό brand οργάνων φυσικοθεραπείας. Κινούμενο γράφημα δύναμης σε canvas, dark mode, φίλτρο πόρων.",sw:["#0B1B33","#1F5BFF","#00B39B","#F5F7FA"],url:"https://gallinios.github.io/kinetra-site/"},
     {t:"Arena Combat Academy",y:"2026",k:"Website",tech:["HTML","CSS","JavaScript"],d:"Σχολή MMA, πυγμαχίας, kickboxing και taekwondo. Εβδομαδιαίο πρόγραμμα με φίλτρα, πακέτα συνδρομής, φόρμα δωρεάν μαθήματος.",sw:["#101826","#E4572E","#F2C14E","#EEF1F5"],url:"https://gallinios.github.io/arena-combat/"},
     {t:"Λιθάρι",y:"2026",k:"Website",tech:["HTML","CSS","JavaScript"],d:"Μεζεδοπωλείο στο Ναύπλιο. Μενού σε καρτέλες, ωράριο με τη σημερινή μέρα, φόρμα κράτησης με έλεγχο ημερομηνίας.",sw:["#1D5C8C","#5E6B2F","#B4552D","#F5F4EF"],url:"https://gallinios.github.io/lithari/"},
@@ -139,7 +139,7 @@ greeting:"Γεια! Είμαι ο βοηθός του portfolio. Ρωτήστε 
 quick:["Τι projects έχεις;","Ποιες τεχνολογίες ξέρεις;","Φτιάχνεις sites για επιχειρήσεις;","Επικοινωνία"],
 fallback:"Δεν το έπιασα. Ρωτήστε για <b>projects</b>, <b>τεχνολογίες</b>, <b>υπηρεσίες</b> ή <b>επικοινωνία</b>, ή στείλτε email στο gallinios2013@gmail.com.",
 intents:[
-{k:["project","εργασ","δουλει","τι εχεισ φτιαξ","δειγμα"],a:"Μερικά projects:<ul><li><b>Διόνυσος</b>: site αίθουσας δεξιώσεων</li><li><b>Kinetra</b>: landing page με animation</li><li><b>Arena</b>: σχολή πολεμικών τεχνών</li><li><b>Τσέπη</b>: εφαρμογή εξόδων</li><li><b>Student Registry</b>: ASP.NET Core</li></ul>Όλα είναι στη λίστα της σελίδας, με φίλτρο ανά τεχνολογία."},
+{k:["project","εργασ","δουλει","τι εχεισ φτιαξ","δειγμα"],a:"Μερικά projects:<ul><li><b>Kinetra</b>: landing page με animation</li><li><b>Arena</b>: σχολή πολεμικών τεχνών</li><li><b>Τσέπη</b>: εφαρμογή εξόδων</li><li><b>Student Registry</b>: ASP.NET Core</li></ul>Όλα είναι στη λίστα της σελίδας, με φίλτρο ανά τεχνολογία."},
 {k:["τεχνολογ","γλωσσ","ξερεισ","stack","html","css","javascript","c#","c++","asp"],a:"HTML, CSS, JavaScript, C# με ASP.NET Core, C++, Bootstrap και Git."},
 {k:["επιχειρ","πελατ","site για","φτιαχνεισ","υπηρεσι","προσφερ"],a:"Ναι! Φτιάχνω landing pages, sites για επιχειρήσεις και web εφαρμογές με ASP.NET Core. Κάνω και διορθώσεις σε υπάρχοντα sites."},
 {k:["τιμ","κοστ","ποσο","χρεων"],a:"Εξαρτάται από το μέγεθος του site. Στείλτε μου λίγα λόγια για το project στο gallinios2013@gmail.com και θα σας στείλω προσφορά."},

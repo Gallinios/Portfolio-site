@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}html{scroll-behavior:smooth}</style>
+<meta name="color-scheme" content="only light">
+<style>html{color-scheme:only light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}html{scroll-behavior:smooth}</style>
 <title>Dimitris Gallinios Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,14 +14,9 @@
 :root{
   --bg:#F2F3F1; --surface:#FFFFFF; --ink:#151A17; --muted:#5C6660; --line:#D9DDD9;
   --accent:#2F6B4F; --accent-soft:#DCEBE3; --hl:#E7F0EA;
+  color-scheme:only light;
   --f-display:"Manrope","Segoe UI",sans-serif; --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0F1311; --surface:#161B18; --ink:#E9EDEA; --muted:#98A39D; --line:#26302B;
-  --accent:#7CC4A0; --accent-soft:#1B2E24; --hl:#18231D; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0F1311; --surface:#161B18; --ink:#E9EDEA; --muted:#98A39D; --line:#26302B;
-  --accent:#7CC4A0; --accent-soft:#1B2E24; --hl:#18231D; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-display);font-size:16px;line-height:1.6}
 h1,h2,h3{margin:0;line-height:1.1;text-wrap:balance}
@@ -75,6 +71,7 @@ footer{margin-top:64px;font-family:var(--f-mono);font-size:12.5px;color:var(--mu
 </head>
 <body>
 
+
 <div class="page">
   <aside>
     <div class="avatar" aria-hidden="true">Δ</div>
@@ -111,6 +108,7 @@ footer{margin-top:64px;font-family:var(--f-mono);font-size:12.5px;color:var(--mu
 (function(){
   // Άλλαξε τους συνδέσμους αν τα repositories έχουν άλλο όνομα
   const P=[
+    {t:"Διόνυσος",y:"2026",k:"Πελάτης",tech:["HTML","CSS","JavaScript"],d:"Site για αίθουσα δεξιώσεων: φωτογραφία σε κάδρο καμάρας, τύποι εκδηλώσεων, gallery, συχνές ερωτήσεις και φόρμα αιτήματος με ημερομηνία και αριθμό καλεσμένων.",sw:["#9C7630","#C9A45C","#F1EADD","#FBF8F2"],url:"https://gallinios.github.io/dionysos/"},
     {t:"Kinetra",y:"2026",k:"Landing page",tech:["HTML","CSS","JavaScript"],d:"Site για φανταστικό brand οργάνων φυσικοθεραπείας. Κινούμενο γράφημα δύναμης σε canvas, dark mode, φίλτρο πόρων.",sw:["#0B1B33","#1F5BFF","#00B39B","#F5F7FA"],url:"https://gallinios.github.io/kinetra-site/"},
     {t:"Arena Combat Academy",y:"2026",k:"Website",tech:["HTML","CSS","JavaScript"],d:"Σχολή MMA, πυγμαχίας, kickboxing και taekwondo. Εβδομαδιαίο πρόγραμμα με φίλτρα, πακέτα συνδρομής, φόρμα δωρεάν μαθήματος.",sw:["#101826","#E4572E","#F2C14E","#EEF1F5"],url:"https://gallinios.github.io/arena-combat/"},
     {t:"Λιθάρι",y:"2026",k:"Website",tech:["HTML","CSS","JavaScript"],d:"Μεζεδοπωλείο στο Ναύπλιο. Μενού σε καρτέλες, ωράριο με τη σημερινή μέρα, φόρμα κράτησης με έλεγχο ημερομηνίας.",sw:["#1D5C8C","#5E6B2F","#B4552D","#F5F4EF"],url:"https://gallinios.github.io/lithari/"},
@@ -134,5 +132,122 @@ footer{margin-top:64px;font-family:var(--f-mono);font-size:12.5px;color:var(--mu
   render("Όλα");
 })();
 </script>
+<!-- CHATBOT START -->
+<script>
+window.CHATBOT={name:"Dimitris",subtitle:"Βοηθός portfolio",accent:"#2F6B4F",font:"Manrope,system-ui,sans-serif",buttonLabel:"Ρωτήστε με",
+greeting:"Γεια! Είμαι ο βοηθός του portfolio. Ρωτήστε με για τα projects, τις τεχνολογίες ή πώς να συνεργαστούμε.",
+quick:["Τι projects έχεις;","Ποιες τεχνολογίες ξέρεις;","Φτιάχνεις sites για επιχειρήσεις;","Επικοινωνία"],
+fallback:"Δεν το έπιασα. Ρωτήστε για <b>projects</b>, <b>τεχνολογίες</b>, <b>υπηρεσίες</b> ή <b>επικοινωνία</b>, ή στείλτε email στο gallinios2013@gmail.com.",
+intents:[
+{k:["project","εργασ","δουλει","τι εχεισ φτιαξ","δειγμα"],a:"Μερικά projects:<ul><li><b>Διόνυσος</b>: site αίθουσας δεξιώσεων</li><li><b>Kinetra</b>: landing page με animation</li><li><b>Arena</b>: σχολή πολεμικών τεχνών</li><li><b>Τσέπη</b>: εφαρμογή εξόδων</li><li><b>Student Registry</b>: ASP.NET Core</li></ul>Όλα είναι στη λίστα της σελίδας, με φίλτρο ανά τεχνολογία."},
+{k:["τεχνολογ","γλωσσ","ξερεισ","stack","html","css","javascript","c#","c++","asp"],a:"HTML, CSS, JavaScript, C# με ASP.NET Core, C++, Bootstrap και Git."},
+{k:["επιχειρ","πελατ","site για","φτιαχνεισ","υπηρεσι","προσφερ"],a:"Ναι! Φτιάχνω landing pages, sites για επιχειρήσεις και web εφαρμογές με ASP.NET Core. Κάνω και διορθώσεις σε υπάρχοντα sites."},
+{k:["τιμ","κοστ","ποσο","χρεων"],a:"Εξαρτάται από το μέγεθος του site. Στείλτε μου λίγα λόγια για το project στο gallinios2013@gmail.com και θα σας στείλω προσφορά."},
+{k:["χρονο","ποσο γρηγορ","ποτε ετοιμ","διαρκει"],a:"Ένα site μίας σελίδας είναι συνήθως έτοιμο σε λίγες μέρες από τη στιγμή που θα έχω τα στοιχεία σας."},
+{k:["επικοινων","email","μειλ","συνεργασ","διαθεσιμ"],a:"Στείλτε μου email στο <b>gallinios2013@gmail.com</b>. Δείτε και το <a href=\"https://github.com/Gallinios\" target=\"_blank\" rel=\"noopener\">GitHub</a> μου."},
+{k:["github","κωδικα"],a:"Όλος ο κώδικας είναι στο <a href=\"https://github.com/Gallinios\" target=\"_blank\" rel=\"noopener\">github.com/Gallinios</a>."},
+{k:["ποιοσ εισαι","για σενα","ποιοσ"],a:"Είμαι ο Dimitris και φτιάχνω ιστοσελίδες και εφαρμογές, με έμφαση στον καθαρό κώδικα και στον προσεγμένο σχεδιασμό."},
+{k:["γεια","καλησπερ","καλημερ","hello"],a:"Γεια σας! Πώς μπορώ να βοηθήσω;"},
+{k:["ευχαριστ"],a:"Ευχαριστώ κι εγώ!"}
+]};
+</script>
+<!-- Chatbot: απαντήσεις από τα στοιχεία του site, χωρίς server -->
+<style>
+.cb-btn{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:9998;display:flex;align-items:center;gap:10px;padding:12px 18px 12px 14px;border:0;border-radius:999px;background:var(--cb-accent);color:var(--cb-on);font:600 15px/1 var(--cb-font,system-ui,sans-serif);box-shadow:0 10px 30px -10px rgba(0,0,0,.45);cursor:pointer;transition:transform .15s}
+.cb-btn:hover{transform:translateY(-2px)}
+.cb-btn svg{width:22px;height:22px;flex:none}
+.cb-btn:focus-visible,.cb-panel button:focus-visible,.cb-panel input:focus-visible{outline:3px solid var(--cb-accent);outline-offset:2px}
+.cb-panel{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:9999;width:min(380px,calc(100vw - 32px));height:min(560px,calc(100dvh - 40px));display:flex;flex-direction:column;background:#FFFFFF;color:#1B1F27;border:1px solid #E3E6EC;border-radius:18px;box-shadow:0 24px 60px -20px rgba(0,0,0,.45);overflow:hidden;font:400 15px/1.5 var(--cb-font,system-ui,sans-serif);color-scheme:light}
+.cb-head{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 16px;background:var(--cb-accent);color:var(--cb-on)}
+.cb-av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;font-weight:700;flex:none;overflow:hidden}
+.cb-av img{width:100%;height:100%;object-fit:contain;background:#fff}
+.cb-head b{display:block;font-size:15.5px}
+.cb-head small{display:block;font-size:12.5px;opacity:.85}
+.cb-x{margin-left:auto;background:transparent;border:0;color:inherit;font-size:24px;line-height:1;cursor:pointer;width:36px;height:36px;border-radius:50%}
+.cb-x:hover{background:rgba(255,255,255,.18)}
+.cb-log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#F6F7F9}
+.cb-m{max-width:86%;padding:10px 13px;border-radius:14px;overflow-wrap:anywhere}
+.cb-m.bot{align-self:flex-start;background:#FFFFFF;border:1px solid #E3E6EC;border-bottom-left-radius:4px}
+.cb-m.me{align-self:flex-end;background:var(--cb-accent);color:var(--cb-on);border-bottom-right-radius:4px}
+.cb-m a{color:var(--cb-link,var(--cb-accent));font-weight:600}
+.cb-m ul{margin:6px 0 0;padding-left:18px}
+.cb-typing{display:inline-flex;gap:4px}
+.cb-typing i{width:7px;height:7px;border-radius:50%;background:#A0A7B4;animation:cbB 1s infinite}
+.cb-typing i:nth-child(2){animation-delay:.15s}.cb-typing i:nth-child(3){animation-delay:.3s}
+@keyframes cbB{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.cb-quick{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;max-height:96px;overflow-y:auto;border-top:1px solid #E3E6EC;background:#FFFFFF;scrollbar-width:thin}
+.cb-quick button{flex:none;font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid #D5D9E1;background:#FFFFFF;color:#1B1F27;cursor:pointer;white-space:nowrap}
+.cb-quick button:hover{border-color:var(--cb-accent);color:var(--cb-link,var(--cb-accent))}
+.cb-form{display:flex;gap:8px;padding:10px 12px 12px;background:#FFFFFF}
+.cb-form input{flex:1;min-width:0;font:inherit;padding:10px 12px;border:1px solid #D5D9E1;border-radius:10px;background:#F6F7F9;color:#1B1F27}
+.cb-form button{flex:none;width:44px;border:0;border-radius:10px;background:var(--cb-accent);color:var(--cb-on);cursor:pointer;display:grid;place-items:center}
+.cb-form button svg{width:20px;height:20px}
+.cb-note{font-size:11px;color:#7A8291;text-align:center;padding:0 12px 8px;background:#FFFFFF}
+@media (max-width:480px){.cb-btn span{display:none}.cb-btn{padding:14px}.cb-panel{right:0;left:0;bottom:0;width:100%;height:min(88dvh,640px);border-radius:18px 18px 0 0;padding-bottom:env(safe-area-inset-bottom,0px)}}
+@media (prefers-reduced-motion:reduce){.cb-btn,.cb-typing i{transition:none;animation:none}}
+</style>
+<script>
+(function(){
+  const C=window.CHATBOT; if(!C) return;
+  const root=document.documentElement.style;
+  root.setProperty('--cb-accent',C.accent); root.setProperty('--cb-on',C.onAccent||'#fff');
+  if(C.link) root.setProperty('--cb-link',C.link);
+  if(C.font) root.setProperty('--cb-font',C.font);
+
+  // Κανονικοποίηση ελληνικών: πεζά, χωρίς τόνους, ς→σ
+  const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ς/g,'σ').replace(/[^\p{L}\p{N}\s]/gu,' ');
+  const intents=C.intents.map(it=>({...it,k:it.k.map(x=>norm(x).trim()).filter(Boolean)}));
+  function answer(q){
+    const words=norm(q).split(/\s+/).filter(Boolean); if(!words.length) return null;
+    let best=null,score=0;
+    for(const it of intents){
+      let s=0;
+      for(const k of it.k){
+        if(k.includes(' ')){ if(norm(q).includes(k)) s+=2.5; }
+        else if(words.some(w=>w.startsWith(k)||(k.length>4&&k.startsWith(w)&&w.length>3))) s+=1+Math.min(k.length,8)/10;
+      }
+      if(s>score){score=s;best=it}
+    }
+    return score>0?best:null;
+  }
+
+  const btn=document.createElement('button');
+  btn.className='cb-btn'; btn.type='button'; btn.setAttribute('aria-label','Άνοιγμα συνομιλίας');
+  btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><span>'+(C.buttonLabel||'Ρωτήστε μας')+'</span>';
+  const panel=document.createElement('div');
+  panel.className='cb-panel'; panel.hidden=true; panel.setAttribute('role','dialog'); panel.setAttribute('aria-label','Συνομιλία με '+C.name);
+  panel.innerHTML=`<div class="cb-head"><div class="cb-av">${C.avatar?`<img src="${C.avatar}" alt="">`:C.name.trim()[0]}</div><div><b>${C.name}</b><small>${C.subtitle||'Απαντάμε αμέσως'}</small></div><button class="cb-x" type="button" aria-label="Κλείσιμο συνομιλίας">×</button></div>
+  <div class="cb-log" aria-live="polite"></div>
+  <div class="cb-quick" role="group" aria-label="Γρήγορες ερωτήσεις"></div>
+  <form class="cb-form"><input id="cb-input" type="text" autocomplete="off" placeholder="Γράψτε την ερώτησή σας..." aria-label="Ερώτηση"><button type="submit" aria-label="Αποστολή"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+  <div class="cb-note">Αυτόματος βοηθός με απαντήσεις από τις πληροφορίες του site</div>`;
+  document.body.append(btn,panel);
+  const log=panel.querySelector('.cb-log'), quick=panel.querySelector('.cb-quick'), form=panel.querySelector('form'), input=panel.querySelector('input');
+  const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function add(html,who){const m=document.createElement('div');m.className='cb-m '+who;m.innerHTML=html;log.appendChild(m);log.scrollTop=log.scrollHeight;return m}
+  function bot(html,chips){
+    const t=add('<span class="cb-typing" aria-label="Γράφει"><i></i><i></i><i></i></span>','bot');
+    setTimeout(()=>{t.innerHTML=html;log.scrollTop=log.scrollHeight;setQuick(chips||C.quick)},reduce?0:Math.min(900,350+html.length*2));
+  }
+  function setQuick(list){quick.innerHTML='';list.forEach(q=>{const b=document.createElement('button');b.type='button';b.textContent=q;b.onclick=()=>ask(q);quick.appendChild(b)})}
+  function ask(q){
+    add(esc(q),'me');
+    const it=answer(q);
+    if(it) bot(it.a,it.next);
+    else bot(C.fallback);
+  }
+  let started=false;
+  function open(){panel.hidden=false;btn.hidden=true;if(!started){started=true;bot(C.greeting)}setTimeout(()=>input.focus(),50)}
+  function close(){panel.hidden=true;btn.hidden=false;btn.focus()}
+  btn.onclick=open; panel.querySelector('.cb-x').onclick=close;
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)close()});
+  form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q)return;input.value='';ask(q)});
+  log.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a&&matchMedia('(max-width:480px)').matches)close()});
+  window.__cbAnswer=answer;
+})();
+</script>
+<!-- CHATBOT END -->
+
 </body>
 </html>

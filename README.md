@@ -8,6 +8,7 @@
 - Η παλέτα χρωμάτων κάθε project εμφανίζεται δίπλα στον τίτλο
 - Σταθερή στήλη με στοιχεία και συνδέσμους
 - Light / dark mode, responsive
+- Chatbot που απαντά σε συχνές ερωτήσεις από τα στοιχεία του site, χωρίς server
 
 ## Τεχνολογίες
 
@@ -19,7 +20,7 @@ HTML, CSS και JavaScript χωρίς frameworks, σε ένα αρχείο. Γ�
 
 ## Demo
 
-https://gallinios.github.io/portfolio/
+https://gallinios.github.io
 
 ## Δημιουργός
 

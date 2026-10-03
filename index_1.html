@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="only dark">
+<meta name="theme-color" content="#0F1311">
+<style>html{color-scheme:only dark;background:#0F1311}body{margin:0}img{max-width:100%}[hidden]{display:none!important}html{scroll-behavior:smooth}</style>
+<title>Dimitris Gallinios Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: sticky intro column on the left, project index on the right with each project's own palette as a swatch strip; filter by technology */
+:root{
+  --bg:#0F1311; --surface:#161B18; --ink:#E9EDEA; --muted:#98A39D; --line:#26302B;
+  --accent:#7CC4A0; --accent-soft:#1B2E24; --hl:#18231D;
+  color-scheme:only dark;
+  --f-display:"Manrope","Segoe UI",sans-serif; --f-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-display);font-size:16px;line-height:1.6}
+h1,h2,h3{margin:0;line-height:1.1;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono)}
+.page{max-width:1200px;margin-inline:auto;padding-inline:20px;padding-block:48px;display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:64px}
+aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 32px);align-self:start;display:grid;gap:22px}
+.avatar{width:72px;height:72px;border-radius:18px;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-weight:800;font-size:28px}
+aside h1{font-size:clamp(34px,4vw,46px);font-weight:800;letter-spacing:-.03em}
+.role{font-family:var(--f-mono);font-size:13px;color:var(--accent)}
+aside .bio{color:var(--muted)}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:14px;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:700;justify-self:start}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.links{display:grid;gap:6px;font-size:15px}
+.links a{text-decoration:none;display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-block:8px}
+.links a:hover{color:var(--accent)}
+.links span{color:var(--muted);font-family:var(--f-mono);font-size:13px}
+.stack{display:flex;flex-wrap:wrap;gap:6px}
+.stack span{font-family:var(--f-mono);font-size:12px;padding:4px 9px;border:1px solid var(--line);border-radius:6px;color:var(--muted)}
+@media (max-width:900px){.page{grid-template-columns:1fr;gap:40px}aside{position:static}}
+
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin-bottom:12px}
+.bar h2{font-size:14px;font-family:var(--f-mono);font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{font:inherit;font-size:14px;font-weight:700;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.list{display:grid;border-top:1px solid var(--line)}
+.proj{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:6px 20px;padding-block:24px;border-bottom:1px solid var(--line);text-decoration:none;align-items:start;transition:background .15s}
+.proj:hover{background:var(--hl)}
+.proj .yr{font-family:var(--f-mono);font-size:13px;color:var(--muted);padding-top:6px}
+.proj h3{font-size:clamp(22px,2.6vw,28px);font-weight:800;letter-spacing:-.02em}
+.proj .arrow{font-size:22px;color:var(--muted);transition:transform .15s}
+.proj:hover .arrow{transform:translate(3px,-3px);color:var(--accent)}
+.proj p{grid-column:2/-1;color:var(--muted);max-width:44em}
+.meta{grid-column:2/-1;display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:6px}
+.sw{display:flex;border-radius:5px;overflow:hidden;border:1px solid var(--line)}
+.sw i{width:18px;height:18px}
+.tech{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.kind{font-family:var(--f-mono);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent)}
+@media (max-width:520px){.proj{grid-template-columns:minmax(0,1fr) auto}.proj .yr{grid-column:1/-1;padding:0}.proj p,.meta{grid-column:1/-1}}
+
+.about{margin-top:64px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.about div{border-top:2px solid var(--ink);padding-top:14px}
+.about h3{font-size:17px;margin-bottom:6px}
+.about p{color:var(--muted);font-size:15px}
+@media (max-width:700px){.about{grid-template-columns:1fr}}
+footer{margin-top:64px;font-family:var(--f-mono);font-size:12.5px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="page">
+  <aside>
+    <div class="avatar" aria-hidden="true">Δ</div>
+    <div>
+      <p class="role">web developer · .NET · front-end</p>
+      <h1>Dimitris Gallinios</h1>
+    </div>
+    <p class="bio">Φτιάχνω ιστοσελίδες και εφαρμογές με HTML, CSS, JavaScript και C#. Με ενδιαφέρει ο καθαρός κώδικας και ο προσεγμένος σχεδιασμός, από την τυπογραφία μέχρι τη βάση δεδομένων.</p>
+    <span class="status">Διαθέσιμος για συνεργασίες</span>
+    <div class="stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>C#</span><span>ASP.NET Core</span><span>C++</span><span>Bootstrap</span><span>Git</span></div>
+    <nav class="links">
+      <a href="https://github.com/Gallinios" target="_blank" rel="noopener">GitHub <span>@Gallinios ↗</span></a>
+      <a href="#contact">Email <span>gallinios2013@gmail.com</span></a>
+    </nav>
+  </aside>
+
+  <main>
+    <div class="bar">
+      <h2>Projects</h2>
+      <div class="filters" id="filters" role="group" aria-label="Φίλτρο τεχνολογίας"></div>
+    </div>
+    <div class="list" id="list"></div>
+
+    <section class="about" id="contact">
+      <div><h3>Πώς δουλεύω</h3><p>Ξεκινάω από το ποιος θα χρησιμοποιήσει τη σελίδα και τι πρέπει να καταφέρει. Μετά σχεδιάζω, γράφω κώδικα και ελέγχω σε κινητό και υπολογιστή.</p></div>
+      <div><h3>Τι προσφέρω</h3><p>Landing pages, sites για επιχειρήσεις, web εφαρμογές με ASP.NET Core, διορθώσεις και βελτιώσεις σε υπάρχοντα sites.</p></div>
+      <div><h3>Επικοινωνία</h3><p>Στείλτε μου email στο <span class="mono">gallinios2013@gmail.com</span> με λίγα λόγια για το project σας.</p></div>
+    </section>
+    <footer>© 2026 Dimitris Gallinios · φτιαγμένο με HTML, CSS και JavaScript</footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  // Άλλαξε τους συνδέσμους αν τα repositories έχουν άλλο όνομα
+  const P=[
+    {t:"BeanBox e-shop",y:"2026",k:"E-shop",tech:["PHP","MySQL"],d:"Ηλεκτρονικό κατάστημα καφέ σε PHP και MySQL. Καλάθι, checkout με έλεγχο πεδίων, παραγγελίες με transaction, admin panel, προστασία από SQL injection, XSS και CSRF, Docker.",sw:["#4A2C1D","#6B3E26","#C96F3B","#FAF7F2"],url:"https://github.com/Gallinios/beanbox-eshop"},
+    {t:"Kinetra",y:"2026",k:"Landing page",tech:["HTML","CSS","JavaScript"],d:"Site για φανταστικό brand οργάνων φυσικοθεραπείας. Κινούμενο γράφημα δύναμης σε canvas, dark mode, φίλτρο πόρων.",sw:["#0B1B33","#1F5BFF","#00B39B","#F5F7FA"],url:"https://gallinios.github.io/kinetra-site/"},
+    {t:"Arena Combat Academy",y:"2026",k:"Website",tech:["HTML","CSS","JavaScript"],d:"Σχολή MMA, πυγμαχίας, kickboxing και taekwondo. Εβδομαδιαίο πρόγραμμα με φίλτρα, πακέτα συνδρομής, φόρμα δωρεάν μαθήματος.",sw:["#101826","#E4572E","#F2C14E","#EEF1F5"],url:"https://gallinios.github.io/arena-combat-site/"},
+    {t:"Λιθάρι",y:"2026",k:"Website",tech:["HTML","CSS","JavaScript"],d:"Μεζεδοπωλείο στο Ναύπλιο. Μενού σε καρτέλες, ωράριο με τη σημερινή μέρα, φόρμα κράτησης με έλεγχο ημερομηνίας.",sw:["#1D5C8C","#5E6B2F","#B4552D","#F5F4EF"],url:"https://gallinios.github.io/lithari-site/"},
+    {t:"Τσέπη",y:"2026",k:"Web app",tech:["HTML","CSS","JavaScript"],d:"Εφαρμογή καταγραφής εξόδων. Προσθήκη και διαγραφή κινήσεων, γραφήματα ανά κατηγορία και ημέρα, όριο προϋπολογισμού, αποθήκευση στον browser.",sw:["#14213D","#3D5AFE","#16A34A","#F4F6FB"],url:"https://gallinios.github.io/Tsepi-site/"},
+    {t:"Όγκος Αρχιτέκτονες",y:"2026",k:"Website",tech:["HTML","CSS","JavaScript"],d:"Μινιμαλιστικό site αρχιτεκτονικού γραφείου. Τεχνικά σχέδια σε SVG, λίστα έργων με φίλτρα, έμφαση στην τυπογραφία.",sw:["#1A1A1A","#C8102E","#8A8A85","#F7F6F2"],url:"https://gallinios.github.io/Ogkos-site/"},
+    {t:"Student Registry",y:"2026",k:"Web app",tech:["C#","ASP.NET Core"],d:"Εφαρμογή MVC για διαχείριση μαθητών: λίστα με αναζήτηση, προσθήκη, επεξεργασία, διαγραφή και έλεγχος πεδίων.",sw:["#212529","#0D6EFD","#198754","#F8F9FA"],url:"https://github.com/Gallinios/studentregistry"},
+    {t:"C++ Projects",y:"2026",k:"Console",tech:["C++"],d:"Μικρά προγράμματα κονσόλας σε C++ για εξάσκηση σε αλγορίθμους και δομές ελέγχου.",sw:["#00599C","#659AD2","#004482","#FFFFFF"],url:"https://github.com/Gallinios/c-projects"},
+    {t:"Coffee Machine",y:"2026",k:"Console",tech:["C++"],d:"Προσομοίωση μηχανής καφέ στην κονσόλα με αντικειμενοστραφή C++. Έλεγχος αποθεμάτων νερού, γάλακτος και καφέ, παρασκευή ροφημάτων από μενού και αναφορά υλικών.",sw:["#3B2416","#8B5A2B","#D9B38C","#F6EFE6"],url:"https://github.com/Gallinios/coffee-machine-cpp"}
+  ];
+  const list=document.getElementById('list'), fl=document.getElementById('filters');
+  const tags=["Όλα",...new Set(P.flatMap(p=>p.tech))];
+  function render(f){
+    [...fl.children].forEach(b=>b.setAttribute('aria-pressed',b.dataset.f===f));
+    list.innerHTML=P.filter(p=>f==="Όλα"||p.tech.includes(f)).map(p=>`
+      <a class="proj" href="${p.url}" target="_blank" rel="noopener">
+        <span class="yr">${p.y}</span><h3>${p.t}</h3><span class="arrow" aria-hidden="true">↗</span>
+        <p>${p.d}</p>
+        <div class="meta"><span class="kind">${p.k}</span><span class="sw" aria-hidden="true">${p.sw.map(c=>`<i style="background:${c}"></i>`).join('')}</span><span class="tech">${p.tech.join(' · ')}</span></div>
+      </a>`).join('');
+  }
+  tags.forEach(t=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.dataset.f=t;b.onclick=()=>render(t);fl.appendChild(b)});
+  render("Όλα");
+})();
+</script>
+<!-- CHATBOT START -->
+<script>
+window.CHATBOT={name:"Dimitris",subtitle:"Βοηθός portfolio",accent:"#2F6B4F",font:"Manrope,system-ui,sans-serif",buttonLabel:"Ρωτήστε με",
+greeting:"Γεια! Είμαι ο βοηθός του portfolio. Ρωτήστε με για τα projects, τις τεχνολογίες ή πώς να συνεργαστούμε.",
+quick:["Τι projects έχεις;","Ποιες τεχνολογίες ξέρεις;","Φτιάχνεις sites για επιχειρήσεις;","Επικοινωνία"],
+fallback:"Δεν το έπιασα. Ρωτήστε για <b>projects</b>, <b>τεχνολογίες</b>, <b>υπηρεσίες</b> ή <b>επικοινωνία</b>, ή στείλτε email στο gallinios2013@gmail.com.",
+intents:[
+{k:["project","εργασ","δουλει","τι εχεισ φτιαξ","δειγμα"],a:"Μερικά projects:<ul><li><b>Kinetra</b>: landing page με animation</li><li><b>Arena</b>: σχολή πολεμικών τεχνών</li><li><b>Τσέπη</b>: εφαρμογή εξόδων</li><li><b>Student Registry</b>: ASP.NET Core</li><li><b>Coffee Machine</b>: μηχανή καφέ σε C++</li><li><b>BeanBox</b>: e-shop σε PHP & MySQL</li></ul>Όλα είναι στη λίστα της σελίδας, με φίλτρο ανά τεχνολογία."},
+{k:["τεχνολογ","γλωσσ","ξερεισ","stack","html","css","javascript","c#","c++","asp","php","mysql"],a:"HTML, CSS, JavaScript, PHP, MySQL, C# με ASP.NET Core, C++, Bootstrap, Git και Docker."},
+{k:["επιχειρ","πελατ","site για","φτιαχνεισ","υπηρεσι","προσφερ"],a:"Ναι! Φτιάχνω landing pages, sites για επιχειρήσεις και web εφαρμογές με ASP.NET Core. Κάνω και διορθώσεις σε υπάρχοντα sites."},
+{k:["τιμ","κοστ","ποσο","χρεων"],a:"Εξαρτάται από το μέγεθος του site. Στείλτε μου λίγα λόγια για το project στο gallinios2013@gmail.com και θα σας στείλω προσφορά."},
+{k:["χρονο","ποσο γρηγορ","ποτε ετοιμ","διαρκει"],a:"Ένα site μίας σελίδας είναι συνήθως έτοιμο σε λίγες μέρες από τη στιγμή που θα έχω τα στοιχεία σας."},
+{k:["επικοινων","email","μειλ","συνεργασ","διαθεσιμ"],a:"Στείλτε μου email στο <b>gallinios2013@gmail.com</b>. Δείτε και το <a href=\"https://github.com/Gallinios\" target=\"_blank\" rel=\"noopener\">GitHub</a> μου."},
+{k:["github","κωδικα"],a:"Όλος ο κώδικας είναι στο <a href=\"https://github.com/Gallinios\" target=\"_blank\" rel=\"noopener\">github.com/Gallinios</a>."},
+{k:["ποιοσ εισαι","για σενα","ποιοσ"],a:"Είμαι ο Dimitris και φτιάχνω ιστοσελίδες και εφαρμογές, με έμφαση στον καθαρό κώδικα και στον προσεγμένο σχεδιασμό."},
+{k:["γεια","καλησπερ","καλημερ","hello"],a:"Γεια σας! Πώς μπορώ να βοηθήσω;"},
+{k:["ευχαριστ"],a:"Ευχαριστώ κι εγώ!"}
+]};
+</script>
+<!-- Chatbot: απαντήσεις από τα στοιχεία του site, χωρίς server -->
+<style>
+.cb-btn{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:9998;display:flex;align-items:center;gap:10px;padding:12px 18px 12px 14px;border:0;border-radius:999px;background:var(--cb-accent);color:var(--cb-on);font:600 15px/1 var(--cb-font,system-ui,sans-serif);box-shadow:0 10px 30px -10px rgba(0,0,0,.45);cursor:pointer;transition:transform .15s}
+.cb-btn:hover{transform:translateY(-2px)}
+.cb-btn svg{width:22px;height:22px;flex:none}
+.cb-btn:focus-visible,.cb-panel button:focus-visible,.cb-panel input:focus-visible{outline:3px solid var(--cb-accent);outline-offset:2px}
+.cb-panel{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:9999;width:min(380px,calc(100vw - 32px));height:min(560px,calc(100dvh - 40px));display:flex;flex-direction:column;background:#FFFFFF;color:#1B1F27;border:1px solid #E3E6EC;border-radius:18px;box-shadow:0 24px 60px -20px rgba(0,0,0,.45);overflow:hidden;font:400 15px/1.5 var(--cb-font,system-ui,sans-serif);color-scheme:light}
+.cb-head{display:flex;align-items:center;gap:12px;padding:14px 14px 14px 16px;background:var(--cb-accent);color:var(--cb-on)}
+.cb-av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;font-weight:700;flex:none;overflow:hidden}
+.cb-av img{width:100%;height:100%;object-fit:contain;background:#fff}
+.cb-head b{display:block;font-size:15.5px}
+.cb-head small{display:block;font-size:12.5px;opacity:.85}
+.cb-x{margin-left:auto;background:transparent;border:0;color:inherit;font-size:24px;line-height:1;cursor:pointer;width:36px;height:36px;border-radius:50%}
+.cb-x:hover{background:rgba(255,255,255,.18)}
+.cb-log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#F6F7F9}
+.cb-m{max-width:86%;padding:10px 13px;border-radius:14px;overflow-wrap:anywhere}
+.cb-m.bot{align-self:flex-start;background:#FFFFFF;border:1px solid #E3E6EC;border-bottom-left-radius:4px}
+.cb-m.me{align-self:flex-end;background:var(--cb-accent);color:var(--cb-on);border-bottom-right-radius:4px}
+.cb-m a{color:var(--cb-link,var(--cb-accent));font-weight:600}
+.cb-m ul{margin:6px 0 0;padding-left:18px}
+.cb-typing{display:inline-flex;gap:4px}
+.cb-typing i{width:7px;height:7px;border-radius:50%;background:#A0A7B4;animation:cbB 1s infinite}
+.cb-typing i:nth-child(2){animation-delay:.15s}.cb-typing i:nth-child(3){animation-delay:.3s}
+@keyframes cbB{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.cb-quick{display:flex;flex-wrap:wrap;gap:6px;padding:10px 12px;max-height:96px;overflow-y:auto;border-top:1px solid #E3E6EC;background:#FFFFFF;scrollbar-width:thin}
+.cb-quick button{flex:none;font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid #D5D9E1;background:#FFFFFF;color:#1B1F27;cursor:pointer;white-space:nowrap}
+.cb-quick button:hover{border-color:var(--cb-accent);color:var(--cb-link,var(--cb-accent))}
+.cb-form{display:flex;gap:8px;padding:10px 12px 12px;background:#FFFFFF}
+.cb-form input{flex:1;min-width:0;font:inherit;padding:10px 12px;border:1px solid #D5D9E1;border-radius:10px;background:#F6F7F9;color:#1B1F27}
+.cb-form button{flex:none;width:44px;border:0;border-radius:10px;background:var(--cb-accent);color:var(--cb-on);cursor:pointer;display:grid;place-items:center}
+.cb-form button svg{width:20px;height:20px}
+.cb-note{font-size:11px;color:#7A8291;text-align:center;padding:0 12px 8px;background:#FFFFFF}
+@media (max-width:480px){.cb-btn span{display:none}.cb-btn{padding:14px}.cb-panel{right:0;left:0;bottom:0;width:100%;height:min(88dvh,640px);border-radius:18px 18px 0 0;padding-bottom:env(safe-area-inset-bottom,0px)}}
+@media (prefers-reduced-motion:reduce){.cb-btn,.cb-typing i{transition:none;animation:none}}
+</style>
+<script>
+(function(){
+  const C=window.CHATBOT; if(!C) return;
+  const root=document.documentElement.style;
+  root.setProperty('--cb-accent',C.accent); root.setProperty('--cb-on',C.onAccent||'#fff');
+  if(C.link) root.setProperty('--cb-link',C.link);
+  if(C.font) root.setProperty('--cb-font',C.font);
+
+  // Κανονικοποίηση ελληνικών: πεζά, χωρίς τόνους, ς→σ
+  const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ς/g,'σ').replace(/[^\p{L}\p{N}\s]/gu,' ');
+  const intents=C.intents.map(it=>({...it,k:it.k.map(x=>norm(x).trim()).filter(Boolean)}));
+  function answer(q){
+    const words=norm(q).split(/\s+/).filter(Boolean); if(!words.length) return null;
+    let best=null,score=0;
+    for(const it of intents){
+      let s=0;
+      for(const k of it.k){
+        if(k.includes(' ')){ if(norm(q).includes(k)) s+=2.5; }
+        else if(words.some(w=>w.startsWith(k)||(k.length>4&&k.startsWith(w)&&w.length>3))) s+=1+Math.min(k.length,8)/10;
+      }
+      if(s>score){score=s;best=it}
+    }
+    return score>0?best:null;
+  }
+
+  const btn=document.createElement('button');
+  btn.className='cb-btn'; btn.type='button'; btn.setAttribute('aria-label','Άνοιγμα συνομιλίας');
+  btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><span>'+(C.buttonLabel||'Ρωτήστε μας')+'</span>';
+  const panel=document.createElement('div');
+  panel.className='cb-panel'; panel.hidden=true; panel.setAttribute('role','dialog'); panel.setAttribute('aria-label','Συνομιλία με '+C.name);
+  panel.innerHTML=`<div class="cb-head"><div class="cb-av">${C.avatar?`<img src="${C.avatar}" alt="">`:C.name.trim()[0]}</div><div><b>${C.name}</b><small>${C.subtitle||'Απαντάμε αμέσως'}</small></div><button class="cb-x" type="button" aria-label="Κλείσιμο συνομιλίας">×</button></div>
+  <div class="cb-log" aria-live="polite"></div>
+  <div class="cb-quick" role="group" aria-label="Γρήγορες ερωτήσεις"></div>
+  <form class="cb-form"><input id="cb-input" type="text" autocomplete="off" placeholder="Γράψτε την ερώτησή σας..." aria-label="Ερώτηση"><button type="submit" aria-label="Αποστολή"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></form>
+  <div class="cb-note">Αυτόματος βοηθός με απαντήσεις από τις πληροφορίες του site</div>`;
+  document.body.append(btn,panel);
+  const log=panel.querySelector('.cb-log'), quick=panel.querySelector('.cb-quick'), form=panel.querySelector('form'), input=panel.querySelector('input');
+  const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function add(html,who){const m=document.createElement('div');m.className='cb-m '+who;m.innerHTML=html;log.appendChild(m);log.scrollTop=log.scrollHeight;return m}
+  function bot(html,chips){
+    const t=add('<span class="cb-typing" aria-label="Γράφει"><i></i><i></i><i></i></span>','bot');
+    setTimeout(()=>{t.innerHTML=html;log.scrollTop=log.scrollHeight;setQuick(chips||C.quick)},reduce?0:Math.min(900,350+html.length*2));
+  }
+  function setQuick(list){quick.innerHTML='';list.forEach(q=>{const b=document.createElement('button');b.type='button';b.textContent=q;b.onclick=()=>ask(q);quick.appendChild(b)})}
+  function ask(q){
+    add(esc(q),'me');
+    const it=answer(q);
+    if(it) bot(it.a,it.next);
+    else bot(C.fallback);
+  }
+  let started=false;
+  function open(){panel.hidden=false;btn.hidden=true;if(!started){started=true;bot(C.greeting)}setTimeout(()=>input.focus(),50)}
+  function close(){panel.hidden=true;btn.hidden=false;btn.focus()}
+  btn.onclick=open; panel.querySelector('.cb-x').onclick=close;
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)close()});
+  form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q)return;input.value='';ask(q)});
+  log.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a&&matchMedia('(max-width:480px)').matches)close()});
+  window.__cbAnswer=answer;
+})();
+</script>
+<!-- CHATBOT END -->
+
+</body>
+</html>
